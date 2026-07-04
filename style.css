@@ -1,0 +1,452 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f8f9fa;
+    color:#222;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.logo h2{
+    color:#ff4d30;
+    font-size:32px;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#ff4d30;
+}
+
+.icons{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    font-size:22px;
+}
+
+.icons i{
+    cursor:pointer;
+    transition:.3s;
+}
+
+.icons i:hover{
+    color:#ff4d30;
+}
+
+.cart{
+    position:relative;
+}
+
+#cart-count{
+    position:absolute;
+    top:-10px;
+    right:-12px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:red;
+    color:#fff;
+    font-size:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:80px 8%;
+    gap:50px;
+    min-height:90vh;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-text h1{
+    font-size:65px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:#555;
+    margin-bottom:35px;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.hero-text button{
+    padding:15px 40px;
+    background:#ff4d30;
+    color:#fff;
+    font-size:18px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.hero-text button:hover{
+    background:#222;
+}
+
+.hero-image{
+    flex:1;
+}
+
+.hero-image img{
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+/* ===========================
+   CATEGORIES
+=========================== */
+
+.categories{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.categories h2{
+    font-size:40px;
+    margin-bottom:50px;
+}
+
+.category-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.category{
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    transition:.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.category:hover{
+    transform:translateY(-10px);
+}
+
+.category i{
+    font-size:45px;
+    color:#ff4d30;
+    margin-bottom:20px;
+}
+
+.category h3{
+    font-size:22px;
+}
+```css
+/* ===========================
+   PRODUCTS
+=========================== */
+
+.products{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.products h2{
+    font-size:40px;
+    margin-bottom:50px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.35s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+
+.card img{
+    height:260px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin-top:20px;
+    font-size:24px;
+}
+
+.card p{
+    color:#ff4d30;
+    font-size:22px;
+    font-weight:700;
+    margin:15px 0;
+}
+
+.card button{
+    width:80%;
+    margin-bottom:25px;
+    padding:14px;
+    border-radius:8px;
+    background:#ff4d30;
+    color:white;
+    font-size:16px;
+    transition:.3s;
+}
+
+.card button:hover{
+    background:#222;
+}
+
+/* ===========================
+   NEWSLETTER
+=========================== */
+
+.newsletter{
+    padding:80px 8%;
+    text-align:center;
+    background:#222;
+    color:#fff;
+}
+
+.newsletter h2{
+    font-size:38px;
+    margin-bottom:30px;
+}
+
+.newsletter input{
+    width:320px;
+    max-width:90%;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:16px;
+    margin-right:10px;
+}
+
+.newsletter button{
+    padding:15px 30px;
+    border-radius:8px;
+    background:#ff4d30;
+    color:white;
+    font-size:16px;
+    transition:.3s;
+}
+
+.newsletter button:hover{
+    background:white;
+    color:#ff4d30;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:50px 8%;
+}
+
+footer h2{
+    color:#ff4d30;
+    font-size:35px;
+}
+
+footer p{
+    margin-top:15px;
+    color:#ccc;
+}
+
+.social{
+    margin:25px 0;
+}
+
+.social i{
+    font-size:24px;
+    margin:0 15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.social i:hover{
+    color:#ff4d30;
+    transform:scale(1.2);
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+
+@media(max-width:992px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero-text h1{
+    font-size:48px;
+}
+
+.category-container{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.nav-links{
+    gap:20px;
+}
+
+}
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    gap:20px;
+}
+
+.nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.hero{
+    padding:50px 5%;
+}
+
+.hero-text h1{
+    font-size:38px;
+}
+
+.hero-text p{
+    font-size:16px;
+}
+
+.products h2,
+.categories h2,
+.newsletter h2{
+    font-size:30px;
+}
+
+.category-container{
+    grid-template-columns:1fr;
+}
+
+.newsletter input{
+    width:100%;
+    margin-bottom:15px;
+}
+
+.newsletter button{
+    width:100%;
+}
+
+.card img{
+    height:220px;
+}
+
+}
+
+@media(max-width:480px){
+
+.logo h2{
+    font-size:26px;
+}
+
+.hero-text h1{
+    font-size:32px;
+}
+
+.icons{
+    gap:15px;
+}
+
+.card h3{
+    font-size:20px;
+}
+
+.card p{
+    font-size:20px;
+}
+
+}
+
