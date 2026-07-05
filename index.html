@@ -10,7 +10,7 @@
 <body>
     <div class="page-shell">
         <nav class="navbar">
-            <a href="#" class="logo">SoleAI</a>
+            <a href="#" class="logo">NIKE</a>
 
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
@@ -21,8 +21,8 @@
             </ul>
 
             <div class="icons">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="cart">
+                <button class="logout-btn" id="logout-btn">Logout</button>
+                <div class="cart" id="cart-toggle">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span id="cart-count">0</span>
                 </div>
@@ -31,10 +31,10 @@
 
         <header class="hero">
             <div class="hero-copy">
-                <p class="eyebrow">New season / curated drops</p>
-                <h1>Step into the future of bold sneakers.</h1>
+                <p class="eyebrow">Official Nike / new drops</p>
+                <h1>Own the legend. Wear the future.</h1>
                 <p class="hero-text">
-                    Discover premium silhouettes built for comfort, movement, and standout street style.
+                    Discover premium Nike sneakers made for comfort, movement, and bold street style.
                 </p>
                 <div class="hero-actions">
                     <a href="#products" class="btn primary">Shop New Arrivals</a>
@@ -66,9 +66,9 @@
         </header>
 
         <section class="marquee">
-            <span>RUN · TRAIN · STREET · PREMIUM</span>
-            <span>RUN · TRAIN · STREET · PREMIUM</span>
-            <span>RUN · TRAIN · STREET · PREMIUM</span>
+            <span>NIKE · AIR · JORDAN · RUN · TRAIN</span>
+            <span>NIKE · AIR · JORDAN · RUN · TRAIN</span>
+            <span>NIKE · AIR · JORDAN · RUN · TRAIN</span>
         </section>
 
         <section id="categories" class="categories">
@@ -103,8 +103,8 @@
 
         <section id="products" class="products">
             <div class="section-heading">
-                <p class="eyebrow">Featured drop</p>
-                <h2>Curated kicks for your next move.</h2>
+                <p class="eyebrow">Nike essentials</p>
+                <h2>Only the best Nike shoes, curated for you.</h2>
             </div>
 
             <div class="product-grid" id="product-grid"></div>
@@ -140,16 +140,27 @@
 
         <section class="newsletter">
             <h2>Stay ahead of the next drop.</h2>
-            <p>Get first access to launches, offers, and limited editions.</p>
+            <p>Get first access to Nike launches, offers, and limited editions.</p>
             <div class="newsletter-form">
                 <input type="email" placeholder="Enter your email">
                 <button>Subscribe</button>
             </div>
         </section>
 
+        <div class="cart-drawer" id="cart-drawer">
+            <div class="cart-drawer-header">
+                <h3>Your Cart</h3>
+                <button id="close-cart">×</button>
+            </div>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-total">
+                <strong>Total: ₹<span id="cart-total-price">0</span></strong>
+            </div>
+        </div>
+
         <footer id="contact">
-            <h2>SoleAI</h2>
-            <p>Premium sneakers for a sharper everyday style.</p>
+            <h2>NIKE</h2>
+            <p>Premium Nike sneakers for a sharper everyday style.</p>
             <div class="social">
                 <i class="fab fa-facebook"></i>
                 <i class="fab fa-instagram"></i>

@@ -1,7 +1,12 @@
-let cartCount = 0;
-
+let cart = [];
 const cartCounter = document.getElementById("cart-count");
 const productGrid = document.getElementById("product-grid");
+const cartDrawer = document.getElementById("cart-drawer");
+const cartItems = document.getElementById("cart-items");
+const cartTotalPrice = document.getElementById("cart-total-price");
+const cartToggle = document.getElementById("cart-toggle");
+const closeCart = document.getElementById("close-cart");
+const logoutBtn = document.getElementById("logout-btn");
 
 const fallbackProducts = [
     {
@@ -114,6 +119,41 @@ const fallbackProducts = [
     }
 ];
 
+function updateCartUI() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCounter) {
+        cartCounter.textContent = totalItems;
+    }
+
+    if (!cartItems) return;
+
+    cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+        if (cartTotalPrice) cartTotalPrice.textContent = "0";
+        return;
+    }
+
+    cart.forEach((item) => {
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item";
+        cartItem.innerHTML = `
+            <div>
+                <strong>${item.name}</strong>
+                <p>Qty: ${item.quantity}</p>
+            </div>
+            <strong>₹${(item.price * item.quantity).toLocaleString("en-IN")}</strong>
+        `;
+        cartItems.appendChild(cartItem);
+    });
+
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    if (cartTotalPrice) {
+        cartTotalPrice.textContent = total.toLocaleString("en-IN");
+    }
+}
+
 function showNotification(message) {
     const notification = document.createElement("div");
     notification.textContent = message;
@@ -147,11 +187,17 @@ function attachCartEvents() {
 
     cartButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            cartCount++;
-            if (cartCounter) {
-                cartCounter.textContent = cartCount;
+            const name = button.dataset.name;
+            const price = Number(button.dataset.price);
+
+            const existingItem = cart.find((item) => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
             }
 
+            updateCartUI();
             button.textContent = "Added ✓";
             button.style.backgroundColor = "#ff5a1f";
 
@@ -182,7 +228,7 @@ function renderProducts(products) {
                 <strong>₹${product.price.toLocaleString("en-IN")}</strong>
                 <span>★ ${product.rating}</span>
             </div>
-            <button class="add-cart">Add to Cart</button>
+            <button class="add-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
         `;
         productGrid.appendChild(card);
     });
@@ -221,6 +267,22 @@ if (subscribeButton) {
     });
 }
 
+if (cartToggle) {
+    cartToggle.addEventListener("click", () => {
+        if (cartDrawer) cartDrawer.classList.add("open");
+    });
+}
+
+if (closeCart) {
+    closeCart.addEventListener("click", () => {
+        if (cartDrawer) cartDrawer.classList.remove("open");
+    });
+}
+
+if (logoutBtn) {
+    logoutBtn.style.display = "none";
+}
+
 window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
     if (!navbar) return;
@@ -228,4 +290,5 @@ window.addEventListener("scroll", () => {
     navbar.style.boxShadow = window.scrollY > 20 ? "0 10px 24px rgba(17, 17, 17, 0.08)" : "none";
 });
 
+updateCartUI();
 loadProducts();
