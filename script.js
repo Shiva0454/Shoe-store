@@ -267,7 +267,10 @@ function updateCartUI() {
                 <strong>${item.name}</strong>
                 <p>Qty: ${item.quantity}</p>
             </div>
-            <strong>₹${(item.price * item.quantity).toLocaleString("en-IN")}</strong>
+            <div class="cart-item-actions">
+                <strong>₹${(item.price * item.quantity).toLocaleString("en-IN")}</strong>
+                <button class="remove-cart-btn" data-name="${item.name}" aria-label="Remove ${item.name}">Remove</button>
+            </div>
         `;
         cartItems.appendChild(cartItem);
     });
@@ -306,6 +309,14 @@ function showNotification(message) {
     }, 2000);
 }
 
+function removeFromCart(name) {
+    const itemIndex = cart.findIndex((item) => item.name === name);
+    if (itemIndex === -1) return;
+    cart.splice(itemIndex, 1);
+    updateCartUI();
+    showNotification("Item removed from cart.");
+}
+
 function attachCartEvents() {
     const cartButtons = document.querySelectorAll(".add-cart");
 
@@ -333,6 +344,16 @@ function attachCartEvents() {
             showNotification("Item added to cart!");
         });
     });
+
+    if (cartItems) {
+        cartItems.addEventListener("click", (event) => {
+            const target = event.target;
+            if (target.classList.contains("remove-cart-btn")) {
+                const name = target.dataset.name;
+                removeFromCart(name);
+            }
+        });
+    }
 }
 
 function addChatMessage(text, sender) {
