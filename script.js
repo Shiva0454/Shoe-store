@@ -17,165 +17,75 @@ const logoutBtn = document.getElementById("logout-btn");
 
 const fallbackProducts = [
     {
+        name: "Nike SB Dunk Low Pro",
+        brand: "Nike",
+        price: 9695,
+        category: "Skate",
+        description: "Classic SB cushioning and street-ready style.",
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Jordan Spizike Low",
+        brand: "Nike",
+        price: 14995,
+        category: "Basketball",
+        description: "Jordan hybrid design with modern comfort.",
+        image: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Jordan Son of Mars Low",
+        brand: "Nike",
+        price: 14995,
+        category: "Basketball",
+        description: "Futuristic Jordan inspiration designed for everyday wear.",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+        rating: 4.6
+    },
+    {
+        name: "Nike Air Max Plus VII",
+        brand: "Nike",
+        price: 16995,
+        category: "Lifestyle",
+        description: "Bold Air Max style with a sport-inspired finish.",
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Jordan Trunner Flow",
+        brand: "Nike",
+        price: 7095,
+        category: "Training",
+        description: "Cushioned crossover training shoe with supportive fit.",
+        image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500",
+        rating: 4.5
+    },
+    {
+        name: "Jordan CMFT Era",
+        brand: "Nike",
+        price: 10795,
+        category: "Lifestyle",
+        description: "Modern Jordan comfort with classic court cues.",
+        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500",
+        rating: 4.6
+    },
+    {
         name: "Nike Air Max 90",
         brand: "Nike",
-        price: 7999,
+        price: 10995,
         category: "Lifestyle",
-        description: "Classic comfort with iconic cushioning.",
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+        description: "Retro Air cushioning with iconic street appeal.",
+        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500",
         rating: 4.8
     },
     {
         name: "Nike Pegasus 41",
         brand: "Nike",
-        price: 8999,
+        price: 10999,
         category: "Running",
-        description: "Responsive cushioning for daily miles.",
+        description: "Responsive cushioning for daily runs.",
         image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500",
-        rating: 4.7
-    },
-    {
-        name: "Nike Dunk Low",
-        brand: "Nike",
-        price: 7499,
-        category: "Streetwear",
-        description: "Low-profile style with premium texture.",
-        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500",
-        rating: 4.9
-    },
-    {
-        name: "Nike SB Zoom",
-        brand: "Nike",
-        price: 6999,
-        category: "Skate",
-        description: "Board-ready grip and smooth impact control.",
-        image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500",
-        rating: 4.6
-    },
-    {
-        name: "Nike Vaporfly 3",
-        brand: "Nike",
-        price: 12999,
-        category: "Running",
-        description: "Carbon-plated speed for race day.",
-        image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500",
-        rating: 4.8
-    },
-    {
-        name: "Nike Air Jordan 1",
-        brand: "Nike",
-        price: 11999,
-        category: "Lifestyle",
-        description: "Heritage hoops style with modern comfort.",
-        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500",
-        rating: 5.0
-    },
-    {
-        name: "Nike Blazer Mid",
-        brand: "Nike",
-        price: 7999,
-        category: "Lifestyle",
-        description: "Retro basketball vibe with a clean finish.",
-        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500",
-        rating: 4.5
-    },
-    {
-        name: "Nike Air Force 1",
-        brand: "Nike",
-        price: 8999,
-        category: "Lifestyle",
-        description: "Timeless sneaker with cushioned comfort.",
-        image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500",
-        rating: 4.7
-    },
-    {
-        name: "Nike React Infinity",
-        brand: "Nike",
-        price: 10999,
-        category: "Running",
-        description: "Supportive ride for every training day.",
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
-        rating: 4.8
-    },
-    {
-        name: "Nike LeBron 21",
-        brand: "Nike",
-        price: 13999,
-        category: "Basketball",
-        description: "Performance engineered for explosive play.",
-        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500",
-        rating: 4.9
-    },
-    {
-        name: "Nike Cortez",
-        brand: "Nike",
-        price: 6499,
-        category: "Classic",
-        description: "Vintage running silhouette with modern comfort.",
-        image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500",
-        rating: 4.4
-    },
-    {
-        name: "Nike Wildhorse 8",
-        brand: "Nike",
-        price: 9999,
-        category: "Trail",
-        description: "Tough grip for rough terrain and long miles.",
-        image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500",
-        rating: 4.6
-    },
-    {
-        name: "Nike Air Max 97",
-        brand: "Nike",
-        price: 10999,
-        category: "Lifestyle",
-        description: "Iconic wave lines with full-length Air cushioning.",
-        image: "https://images.unsplash.com/photo-1534430480878-8570e43b2651?w=500",
-        rating: 4.8
-    },
-    {
-        name: "Nike ZoomX Invincible",
-        brand: "Nike",
-        price: 13999,
-        category: "Running",
-        description: "Soft, responsive foam built for long training runs.",
-        image: "https://images.unsplash.com/photo-1505740106531-4243f3831d39?w=500",
-        rating: 4.7
-    },
-    {
-        name: "Nike Air Max 720",
-        brand: "Nike",
-        price: 12499,
-        category: "Lifestyle",
-        description: "Maximum Air unit comfort with a futuristic silhouette.",
-        image: "https://images.unsplash.com/photo-1519741498377-2073b03d7b87?w=500",
-        rating: 4.6
-    },
-    {
-        name: "Nike SB Dunk High",
-        brand: "Nike",
-        price: 8499,
-        category: "Skate",
-        description: "Skate-ready padding with bold street style.",
-        image: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?w=500",
-        rating: 4.5
-    },
-    {
-        name: "Nike Air VaporMax",
-        brand: "Nike",
-        price: 14999,
-        category: "Running",
-        description: "Air-only cushioning for next-level comfort.",
-        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500",
-        rating: 4.8
-    },
-    {
-        name: "Nike Metcon 8",
-        brand: "Nike",
-        price: 9999,
-        category: "Training",
-        description: "Stable cross-training support with durable grip.",
-        image: "https://images.unsplash.com/photo-1483721310020-03333e577078?w=500",
         rating: 4.7
     },
     {
@@ -183,26 +93,62 @@ const fallbackProducts = [
         brand: "Nike",
         price: 10499,
         category: "Lifestyle",
-        description: "Low-cut profile with bold heel air cushioning.",
-        image: "https://images.unsplash.com/photo-1528701800489-20b9df44e9f5?w=500",
+        description: "Large heel Air unit for all-day comfort.",
+        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500",
         rating: 4.6
     },
     {
-        name: "Nike Jordan Delta",
+        name: "Nike Air Max 97",
         brand: "Nike",
-        price: 9999,
+        price: 11995,
         category: "Lifestyle",
-        description: "Futuristic materials with a cushioned ride.",
-        image: "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=500",
+        description: "Wave-inspired design with full-length Air comfort.",
+        image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500",
         rating: 4.7
     },
     {
-        name: "Nike Free RN",
+        name: "Nike Air Force 1",
+        brand: "Nike",
+        price: 8999,
+        category: "Lifestyle",
+        description: "Timeless leather sneaker with iconic fit.",
+        image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike React Infinity Run",
+        brand: "Nike",
+        price: 12999,
+        category: "Running",
+        description: "Soft foam designed to make every run feel easy.",
+        image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Nike VaporMax Flyknit 3",
+        brand: "Nike",
+        price: 15995,
+        category: "Running",
+        description: "Air-powered comfort with a breathable Flyknit upper.",
+        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Nike Metcon 8",
+        brand: "Nike",
+        price: 9999,
+        category: "Training",
+        description: "Gym-ready stability with durable traction.",
+        image: "https://images.unsplash.com/photo-1483721310020-03333e577078?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike Free RN 5.0",
         brand: "Nike",
         price: 8499,
         category: "Running",
-        description: "Flexible sole for natural movement.",
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+        description: "Flexible shoe for natural movement.",
+        image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500",
         rating: 4.5
     },
     {
@@ -210,35 +156,35 @@ const fallbackProducts = [
         brand: "Nike",
         price: 11999,
         category: "Lifestyle",
-        description: "Signature Tuned Air cushioning and bold style.",
-        image: "https://images.unsplash.com/photo-1480539942154-45f4bd8304ca?w=500",
-        rating: 4.8
+        description: "Tuned Air cushioning with iconic design.",
+        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500",
+        rating: 4.7
     },
     {
         name: "Nike Air Zoom Pegasus",
         brand: "Nike",
         price: 10999,
         category: "Running",
-        description: "Everyday runner with responsive Zoom Air.",
-        image: "https://images.unsplash.com/photo-1491238228988-15d7bfa0cbf8?w=500",
+        description: "Everyday runner with responsive Zoom cushioning.",
+        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500",
         rating: 4.7
     },
     {
-        name: "Nike SB Blazer",
+        name: "Nike SB Blazer Low",
         brand: "Nike",
         price: 7999,
         category: "Skate",
-        description: "Classic skate silhouette with premium details.",
-        image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500",
+        description: "Flattened skate silhouette with smooth control.",
+        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500",
         rating: 4.6
     },
     {
-        name: "Nike Zoom Fly",
+        name: "Nike Dunk Low",
         brand: "Nike",
-        price: 12999,
-        category: "Running",
-        description: "Lightweight speed shoe built for tempo runs.",
-        image: "https://images.unsplash.com/photo-1503444990679-525027f14d10?w=500",
+        price: 9995,
+        category: "Lifestyle",
+        description: "Heritage basketball style made for today's streets.",
+        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500",
         rating: 4.7
     },
     {
@@ -246,9 +192,54 @@ const fallbackProducts = [
         brand: "Nike",
         price: 13499,
         category: "Lifestyle",
-        description: "Elevated cushion and futuristic shape for street-ready wear.",
+        description: "Surf-inspired Air Max comfort with bold lines.",
         image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500",
         rating: 4.6
+    },
+    {
+        name: "Nike Zoom Fly 4",
+        brand: "Nike",
+        price: 12999,
+        category: "Running",
+        description: "Speed-fueled running shoe with a responsive plate.",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike Space Hippie 04",
+        brand: "Nike",
+        price: 12995,
+        category: "Lifestyle",
+        description: "Recycled materials and futuristic style.",
+        image: "https://images.unsplash.com/photo-1480435206670-1f67806ff018?w=500",
+        rating: 4.6
+    },
+    {
+        name: "Nike Jordan Delta",
+        brand: "Nike",
+        price: 9999,
+        category: "Lifestyle",
+        description: "Runner-inspired Jordan shoe for daily energy.",
+        image: "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike Air VaporMax Plus",
+        brand: "Nike",
+        price: 14999,
+        category: "Lifestyle",
+        description: "Air-cushioned style fused with futuristic lines.",
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Nike Air Max 1",
+        brand: "Nike",
+        price: 10499,
+        category: "Lifestyle",
+        description: "Original Air Max cushioning with timeless style.",
+        image: "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=500",
+        rating: 4.7
     }
 ];
 
