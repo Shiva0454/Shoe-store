@@ -2,7 +2,6 @@ let cartCount = 0;
 
 const cartCounter = document.getElementById("cart-count");
 const productGrid = document.getElementById("product-grid");
-const API_URL = "http://localhost:5000/api/products";
 
 const fallbackProducts = [
     {
@@ -191,19 +190,7 @@ function renderProducts(products) {
     attachCartEvents();
 }
 
-async function loadProducts() {
-    try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-
-        if (Array.isArray(data) && data.length > 0) {
-            renderProducts(data);
-            return;
-        }
-    } catch (error) {
-        console.warn("Backend unavailable, showing local Nike collection.", error);
-    }
-
+function loadProducts() {
     renderProducts(fallbackProducts);
 }
 
