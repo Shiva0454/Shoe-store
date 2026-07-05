@@ -31,7 +31,7 @@
 
         <header class="hero">
             <div class="hero-copy">
-                <p class="eyebrow">Official Nike / new drops</p>
+                <p class="eyebrow">Official git add / new drops</p>
                 <h1>Own the legend. Wear the future.</h1>
                 <p class="hero-text">
                     Discover premium Nike sneakers made for comfort, movement, and bold street style.
@@ -155,6 +155,29 @@
             <div id="cart-items" class="cart-items"></div>
             <div class="cart-total">
                 <strong>Total: ₹<span id="cart-total-price">0</span></strong>
+            </div>
+        </div>
+
+        <div class="shoe-chat-widget" id="shoe-chat-widget">
+            <button class="shoe-chat-toggle" id="shoe-chat-toggle" aria-label="Open shoe chat">
+                <span>Ask SoleAI</span>
+                <i class="fa-solid fa-comments"></i>
+            </button>
+            <div class="shoe-chat-panel" id="shoe-chat-panel" aria-hidden="true">
+                <div class="shoe-chat-header">
+                    <div>
+                        <strong>SoleAI Shoe Bot</strong>
+                        <p>Only sneakers, fit, styling, and release talk.</p>
+                    </div>
+                    <button class="shoe-chat-close" id="shoe-chat-close" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="shoe-chat-messages" id="shoe-chat-messages">
+                    <div class="shoe-chat-message bot">Hi! Ask me anything about shoes, sneakers, fit, care, or the latest drops.</div>
+                </div>
+                <form class="shoe-chat-form" id="shoe-chat-form">
+                    <input type="text" id="shoe-chat-input" placeholder="Type your shoe question..." autocomplete="off">
+                    <button type="submit" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
             </div>
         </div>
 

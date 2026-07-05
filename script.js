@@ -6,6 +6,13 @@ const cartItems = document.getElementById("cart-items");
 const cartTotalPrice = document.getElementById("cart-total-price");
 const cartToggle = document.getElementById("cart-toggle");
 const closeCart = document.getElementById("close-cart");
+const themeToggle = document.getElementById("theme-toggle");
+const chatToggle = document.getElementById("shoe-chat-toggle");
+const chatPanel = document.getElementById("shoe-chat-panel");
+const chatClose = document.getElementById("shoe-chat-close");
+const chatForm = document.getElementById("shoe-chat-form");
+const chatInput = document.getElementById("shoe-chat-input");
+const chatMessages = document.getElementById("shoe-chat-messages");
 const logoutBtn = document.getElementById("logout-btn");
 
 const fallbackProducts = [
@@ -116,6 +123,132 @@ const fallbackProducts = [
         description: "Tough grip for rough terrain and long miles.",
         image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500",
         rating: 4.6
+    },
+    {
+        name: "Nike Air Max 97",
+        brand: "Nike",
+        price: 10999,
+        category: "Lifestyle",
+        description: "Iconic wave lines with full-length Air cushioning.",
+        image: "https://images.unsplash.com/photo-1534430480878-8570e43b2651?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Nike ZoomX Invincible",
+        brand: "Nike",
+        price: 13999,
+        category: "Running",
+        description: "Soft, responsive foam built for long training runs.",
+        image: "https://images.unsplash.com/photo-1505740106531-4243f3831d39?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike Air Max 720",
+        brand: "Nike",
+        price: 12499,
+        category: "Lifestyle",
+        description: "Maximum Air unit comfort with a futuristic silhouette.",
+        image: "https://images.unsplash.com/photo-1519741498377-2073b03d7b87?w=500",
+        rating: 4.6
+    },
+    {
+        name: "Nike SB Dunk High",
+        brand: "Nike",
+        price: 8499,
+        category: "Skate",
+        description: "Skate-ready padding with bold street style.",
+        image: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?w=500",
+        rating: 4.5
+    },
+    {
+        name: "Nike Air VaporMax",
+        brand: "Nike",
+        price: 14999,
+        category: "Running",
+        description: "Air-only cushioning for next-level comfort.",
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Nike Metcon 8",
+        brand: "Nike",
+        price: 9999,
+        category: "Training",
+        description: "Stable cross-training support with durable grip.",
+        image: "https://images.unsplash.com/photo-1483721310020-03333e577078?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike Air Max 270",
+        brand: "Nike",
+        price: 10499,
+        category: "Lifestyle",
+        description: "Low-cut profile with bold heel air cushioning.",
+        image: "https://images.unsplash.com/photo-1528701800489-20b9df44e9f5?w=500",
+        rating: 4.6
+    },
+    {
+        name: "Nike Jordan Delta",
+        brand: "Nike",
+        price: 9999,
+        category: "Lifestyle",
+        description: "Futuristic materials with a cushioned ride.",
+        image: "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike Free RN",
+        brand: "Nike",
+        price: 8499,
+        category: "Running",
+        description: "Flexible sole for natural movement.",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+        rating: 4.5
+    },
+    {
+        name: "Nike Air Max Plus",
+        brand: "Nike",
+        price: 11999,
+        category: "Lifestyle",
+        description: "Signature Tuned Air cushioning and bold style.",
+        image: "https://images.unsplash.com/photo-1480539942154-45f4bd8304ca?w=500",
+        rating: 4.8
+    },
+    {
+        name: "Nike Air Zoom Pegasus",
+        brand: "Nike",
+        price: 10999,
+        category: "Running",
+        description: "Everyday runner with responsive Zoom Air.",
+        image: "https://images.unsplash.com/photo-1491238228988-15d7bfa0cbf8?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike SB Blazer",
+        brand: "Nike",
+        price: 7999,
+        category: "Skate",
+        description: "Classic skate silhouette with premium details.",
+        image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500",
+        rating: 4.6
+    },
+    {
+        name: "Nike Zoom Fly",
+        brand: "Nike",
+        price: 12999,
+        category: "Running",
+        description: "Lightweight speed shoe built for tempo runs.",
+        image: "https://images.unsplash.com/photo-1503444990679-525027f14d10?w=500",
+        rating: 4.7
+    },
+    {
+        name: "Nike Air Max 720 Horizon",
+        brand: "Nike",
+        price: 13499,
+        category: "Lifestyle",
+        description: "Elevated cushion and futuristic shape for street-ready wear.",
+        image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500",
+        rating: 4.6
     }
 ];
 
@@ -208,6 +341,94 @@ function attachCartEvents() {
 
             showNotification("Item added to cart!");
         });
+    });
+}
+
+function addChatMessage(text, sender) {
+    if (!chatMessages) return;
+
+    const message = document.createElement("div");
+    message.className = `shoe-chat-message ${sender}`;
+    message.textContent = text;
+    chatMessages.appendChild(message);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function getShoeBotResponse(message) {
+    const normalized = message.toLowerCase();
+    const shoeTerms = ["shoe", "sneaker", "sneakers", "nike", "air", "jordan", "run", "retro", "fit", "size", "comfort", "drop", "release", "sole", "material", "style", "hype", "train", "court", "lifestyle", "design", "cushion", "support", "width", "performance"];
+    const isShoeRelated = shoeTerms.some((term) => normalized.includes(term));
+
+    if (!isShoeRelated) {
+        return "I only talk about shoes and sneakers here — ask me about fit, style, comfort, or the latest sneaker drops.";
+    }
+
+    if (/(size|fit|wide|narrow|true to size|wide feet|small|big)/i.test(normalized)) {
+        return "For Nike sneakers, most people find them true to size. If you have wider feet, try a half size up and look for a roomier toe box.";
+    }
+
+    if (/(running|run|marathon|trainer|training)/i.test(normalized)) {
+        return "Running shoes should feel responsive, breathable, and cushioned. Look for Nike React or Zoom cushioning for energetic daily runs.";
+    }
+
+    if (/(comfort|cushion|padded|support)/i.test(normalized)) {
+        return "Comfort comes from plush cushioning, a stable heel counter, and soft upper materials. The best sneaker fit should feel snug but not tight.";
+    }
+
+    if (/(release|drop|new|launch|upcoming|coming)/i.test(normalized)) {
+        return "Keep an eye on drops for limited colorways and collabs. Most hype releases sell out fast, so bookmark the launch date and sign up for alerts.";
+    }
+
+    if (/(style|outfit|look|wear|street|fashion)/i.test(normalized)) {
+        return "Pair white or black Nike sneakers with slim denim, joggers, or streetwear layers. High-contrast colorways work great with muted outfits.";
+    }
+
+    if (/(jordans|air force|air max|pegasus|vaporfly|cortez|blazer)/i.test(normalized)) {
+        return "Those are classic Nike silhouettes. Each model has its own vibe — Jordan for heritage hoops, Air Force 1 for clean street style, and Pegasus for everyday runs.";
+    }
+
+    if (/(care|clean|maintenance|wash)/i.test(normalized)) {
+        return "Gently wipe sneakers with a damp cloth, use a soft brush on soles, and avoid soaking them. For leather, apply a light conditioner to keep them fresh.";
+    }
+
+    return "Great question! The best sneaker choice depends on your activity, fit, and style. Let me know if you want advice for running, everyday wear, or a fresh drop.";
+}
+
+function openShoeChat() {
+    if (!chatPanel) return;
+    chatPanel.classList.add("open");
+    chatPanel.setAttribute("aria-hidden", "false");
+    if (chatInput) chatInput.focus();
+}
+
+function closeShoeChat() {
+    if (!chatPanel) return;
+    chatPanel.classList.remove("open");
+    chatPanel.setAttribute("aria-hidden", "true");
+}
+
+if (chatToggle) {
+    chatToggle.addEventListener("click", openShoeChat);
+}
+
+if (chatClose) {
+    chatClose.addEventListener("click", closeShoeChat);
+}
+
+if (chatForm) {
+    chatForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!chatInput) return;
+
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+
+        addChatMessage(userMessage, "user");
+        chatInput.value = "";
+
+        setTimeout(() => {
+            addChatMessage(getShoeBotResponse(userMessage), "bot");
+        }, 400);
     });
 }
 
