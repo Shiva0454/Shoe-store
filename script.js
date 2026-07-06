@@ -6,6 +6,14 @@ const cartItems = document.getElementById("cart-items");
 const cartTotalPrice = document.getElementById("cart-total-price");
 const cartToggle = document.getElementById("cart-toggle");
 const closeCart = document.getElementById("close-cart");
+const checkoutBtn = document.getElementById("checkout-btn");
+const deliveryAddress = document.getElementById("delivery-address");
+const paymentMethod = document.getElementById("payment-method");
+const upiField = document.getElementById("upi-field");
+const upiId = document.getElementById("upi-id");
+const approvePaymentBtn = document.getElementById("approve-payment-btn");
+const paymentStatus = document.getElementById("payment-status");
+const checkoutMessage = document.getElementById("checkout-message");
 const themeToggle = document.getElementById("theme-toggle");
 const chatToggle = document.getElementById("shoe-chat-toggle");
 const chatPanel = document.getElementById("shoe-chat-panel");
@@ -268,10 +276,11 @@ function updateCartUI() {
             <div>
                 <strong>${item.name}</strong>
                 <p>Qty: ${item.quantity}</p>
+                ${item.size ? `<p>Size: ${item.size}</p>` : ""}
             </div>
             <div class="cart-item-actions">
                 <strong>₹${(item.price * item.quantity).toLocaleString("en-IN")}</strong>
-                <button class="remove-cart-btn" data-name="${item.name}" aria-label="Remove ${item.name}">Remove</button>
+                <button class="remove-cart-btn" data-name="${item.name}" data-size="${item.size || ""}" aria-label="Remove ${item.name}">Remove</button>
             </div>
         `;
         cartItems.appendChild(cartItem);
@@ -311,8 +320,8 @@ function showNotification(message) {
     }, 2000);
 }
 
-function removeFromCart(name) {
-    const itemIndex = cart.findIndex((item) => item.name === name);
+function removeFromCart(name, size = "") {
+    const itemIndex = cart.findIndex((item) => item.name === name && item.size === size);
     if (itemIndex === -1) return;
     cart.splice(itemIndex, 1);
     updateCartUI();
@@ -326,12 +335,19 @@ function attachCartEvents() {
         button.addEventListener("click", () => {
             const name = button.dataset.name;
             const price = Number(button.dataset.price);
+            const sizeSelect = button.closest(".card")?.querySelector(".size-select");
+            const selectedSize = sizeSelect?.value || "";
 
-            const existingItem = cart.find((item) => item.name === name);
+            if (!selectedSize) {
+                showNotification("Select a shoe size before adding to cart.");
+                return;
+            }
+
+            const existingItem = cart.find((item) => item.name === name && item.size === selectedSize);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ name, price, quantity: 1 });
+                cart.push({ name, price, quantity: 1, size: selectedSize });
             }
 
             updateCartUI();
@@ -352,10 +368,118 @@ function attachCartEvents() {
             const target = event.target;
             if (target.classList.contains("remove-cart-btn")) {
                 const name = target.dataset.name;
-                removeFromCart(name);
+                const size = target.dataset.size || "";
+                removeFromCart(name, size);
             }
         });
     }
+}
+
+let paymentApproved = false;
+
+function resetPaymentApproval() {
+    paymentApproved = false;
+    if (paymentStatus) {
+        paymentStatus.textContent = "Payment approval pending.";
+    }
+    if (approvePaymentBtn) {
+        approvePaymentBtn.disabled = !paymentMethod?.value;
+    }
+}
+
+function handlePaymentMethodChange() {
+    const payment = paymentMethod?.value;
+    if (upiField) {
+        upiField.style.display = payment === "UPI" ? "grid" : "none";
+    }
+    if (payment === "UPI" && upiId && !upiId.value) {
+        upiId.value = "9318418830@axl";
+    }
+    resetPaymentApproval();
+}
+
+function handlePaymentApproval() {
+    const payment = paymentMethod?.value || "";
+    const upi = upiId?.value.trim() || "";
+
+    if (!payment) {
+        showNotification("Select a payment method before approving payment.");
+        return;
+    }
+
+    if (payment === "UPI" && !upi) {
+        showNotification("Enter your UPI ID before approving payment.");
+        return;
+    }
+
+    paymentApproved = true;
+    if (paymentStatus) {
+        paymentStatus.textContent = payment === "UPI" ? `UPI payment approved for ${upi}.` : `Payment approved for ${payment}.`;
+    }
+    showNotification("Payment approved. You may now place your order.");
+}
+
+function handleCheckout() {
+    if (cart.length === 0) {
+        showNotification("Your cart is empty.");
+        return;
+    }
+
+    const address = deliveryAddress?.value.trim() || "";
+    const payment = paymentMethod?.value || "";
+    const upi = upiId?.value.trim() || "";
+
+    if (!address) {
+        showNotification("Please enter a delivery address.");
+        return;
+    }
+
+    if (!payment) {
+        showNotification("Please select a payment method.");
+        return;
+    }
+
+    if (payment === "UPI" && !upi) {
+        showNotification("Please enter your UPI ID.");
+        return;
+    }
+
+    if (!paymentApproved) {
+        showNotification("Please approve payment before placing the order.");
+        return;
+    }
+
+    const paymentLabel = payment === "UPI" ? `${payment} (${upi})` : payment;
+    showNotification("Order placed successfully!");
+    if (checkoutMessage) {
+        checkoutMessage.textContent = `Delivering to ${address}. Payment method: ${paymentLabel}.`;
+    }
+
+    cart = [];
+    updateCartUI();
+    if (deliveryAddress) deliveryAddress.value = "";
+    if (paymentMethod) paymentMethod.value = "";
+    if (upiId) upiId.value = "9318418830@axl";
+    if (upiField) upiField.style.display = "none";
+    if (cartDrawer) cartDrawer.classList.remove("open");
+    resetPaymentApproval();
+}
+
+if (paymentMethod) {
+    paymentMethod.addEventListener("change", handlePaymentMethodChange);
+    handlePaymentMethodChange();
+}
+
+if (upiId) {
+    upiId.addEventListener("input", resetPaymentApproval);
+}
+
+if (approvePaymentBtn) {
+    approvePaymentBtn.addEventListener("click", handlePaymentApproval);
+}
+
+if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", handleCheckout);
 }
 
 function addChatMessage(text, sender) {
@@ -485,7 +609,22 @@ function renderProducts(products) {
                 <strong>₹${product.price.toLocaleString("en-IN")}</strong>
                 <span>★ ${product.rating}</span>
             </div>
-            <button class="add-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
+            <div class="product-actions">
+                <label class="size-label">
+                    Size
+                    <select class="size-select" aria-label="Select shoe size">
+                        <option value="">Select size</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </label>
+                <button class="add-cart" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
+            </div>
         `;
         productGrid.appendChild(card);
     });

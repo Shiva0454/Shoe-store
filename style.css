@@ -536,10 +536,38 @@ h1, h2, h3, .logo {
     font-weight: 700;
 }
 
+.product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 16px;
+    margin-top: 14px;
+}
+
+.size-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    width: 40%;
+}
+
+.size-label select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    outline: none;
+}
+
 .card button {
-    margin: 14px 16px 0;
-    width: calc(100% - 32px);
-    padding: 12px 14px;
+    margin: 0;
+    width: auto;
+    padding: 12px 18px;
     background: var(--accent);
     color: #111;
     border-radius: 999px;
@@ -573,7 +601,7 @@ h1, h2, h3, .logo {
     color: #f7efe8;
     box-shadow: -12px 0 30px rgba(0,0,0,0.35);
     transition: right 0.3s ease;
-    z-index: 1000;
+    z-index: 2000;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -653,6 +681,62 @@ h1, h2, h3, .logo {
     padding-top: 16px;
     border-top: 1px solid var(--border);
     margin-top: 12px;
+}
+
+.cart-checkout {
+    margin-top: 18px;
+    display: grid;
+    gap: 12px;
+}
+
+.checkout-field {
+    display: grid;
+    gap: 8px;
+}
+
+.checkout-field label {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.checkout-field textarea,
+.checkout-field select,
+.checkout-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    resize: vertical;
+    outline: none;
+}
+
+.upi-help {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #39f5ff, #ff3ab9);
+    color: #111;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    opacity: 0.95;
+}
+
+.checkout-message {
+    margin-top: 6px;
+    color: rgba(212, 176, 106, 0.95);
+    font-size: 0.92rem;
+    line-height: 1.4;
 }
 
 .story {
@@ -1031,114 +1115,6 @@ footer h2 {
 
     .story {
         grid-template-columns: 1fr;
-    }
-}
-
-/* Put Home link on the right on small screens */
-@media (max-width: 760px) {
-    /* style for the Home link now moved into icons */
-    .home-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6px 10px;
-        border-radius: 8px;
-        background: transparent;
-        color: var(--text);
-        font-weight: 700;
-        margin-right: 8px;
-    }
-
-    .icons {
-        position: static;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .logo {
-        margin-left: 6px;
-    }
-
-    .page-shell {
-        width: calc(100% - 18px);
-        margin: 0 auto;
-        padding-bottom: 18px;
-    }
-
-    .hero h1 {
-        font-size: clamp(1.6rem, 6vw, 2.4rem);
-        max-width: 28ch;
-    }
-
-    .hero-text {
-        max-width: 100%;
-        margin-bottom: 18px;
-    }
-
-    .hero-main-card {
-        height: 200px;
-    }
-
-    .hero-main-card img {
-        object-fit: contain;
-    }
-
-    .floating-card, .floating-pill {
-        display: none;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .card img {
-        height: auto;
-        max-height: 220px;
-        object-fit: cover;
-    }
-
-    .cart-drawer {
-        width: 92%;
-        right: -100%;
-    }
-
-    .cart-drawer.open {
-        right: 4%;
-    }
-
-
-@media (max-width: 420px) {
-    /* further tighten for very small screens */
-    .home-link {
-        right: 86px;
-        top: 12px;
-        font-size: 0.95rem;
-    }
-
-    .menu-toggle {
-        right: 52px;
-    }
-
-    .hero-main-card {
-        height: 160px;
-    }
-
-    .shoe-chat-panel {
-        bottom: 68px;
-    }
-}
-    .home-link a {
-        color: var(--text);
-        font-weight: 700;
-        padding: 6px 10px;
-        border-radius: 8px;
-        background: transparent;
-    }
-
-    /* Hide other nav links in mobile; menu-toggle controls dropdown */
-    .nav-links:not(.home-link) {
-        display: none;
     }
 }
 
