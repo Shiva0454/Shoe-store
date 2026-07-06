@@ -1,0 +1,25 @@
+{
+  "name": "shoe-store",
+  "version": "1.0.0",
+  "description": "Aniva - Modern Sneaker Store with Vercel Web Analytics",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx serve .",
+    "preview": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shiva0454/Shoe-store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shiva0454/Shoe-store/issues"
+  },
+  "homepage": "https://github.com/Shiva0454/Shoe-store#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
