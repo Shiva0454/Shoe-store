@@ -14,6 +14,8 @@ const chatForm = document.getElementById("shoe-chat-form");
 const chatInput = document.getElementById("shoe-chat-input");
 const chatMessages = document.getElementById("shoe-chat-messages");
 const logoutBtn = document.getElementById("logout-btn");
+const menuToggle = document.getElementById("menu-toggle");
+const navbar = document.querySelector(".navbar");
 
 const fallbackProducts = [
     {
@@ -441,6 +443,19 @@ if (chatForm) {
         setTimeout(() => {
             addChatMessage(getShoeBotResponse(userMessage), "bot");
         }, 400);
+    });
+}
+
+if (menuToggle && navbar) {
+    menuToggle.addEventListener("click", () => {
+        navbar.classList.toggle("nav-open");
+    });
+
+    // close menu when a nav link is clicked (mobile)
+    document.querySelectorAll('.nav-links a').forEach((a) => {
+        a.addEventListener('click', () => {
+            if (navbar.classList.contains('nav-open')) navbar.classList.remove('nav-open');
+        });
     });
 }
 

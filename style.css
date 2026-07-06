@@ -130,6 +130,20 @@ h1, h2, h3, .logo {
     border-bottom: 1px solid transparent;
 }
 
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 1.3rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
 .logo {
     font-size: 1.45rem;
     font-weight: 700;
@@ -143,6 +157,63 @@ h1, h2, h3, .logo {
     gap: 24px;
     font-weight: 500;
     color: var(--muted);
+}
+
+.navbar.nav-open .nav-links {
+    display: flex;
+}
+
+/* Mobile adjustments */
+@media (max-width: 760px) {
+    .menu-toggle {
+        display: grid;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(17,17,17,0.98);
+        padding: 16px 18px;
+        border-radius: 12px;
+        flex-direction: column;
+        gap: 12px;
+        width: calc(100% - 40px);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 8px 6px;
+    }
+
+    .navbar.nav-open .nav-links {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.8rem, 6vw, 2.6rem);
+        max-width: 24ch;
+        line-height: 1.05;
+    }
+
+    .hero-visual {
+        min-height: 280px;
+    }
+
+    .hero-main-card {
+        position: relative;
+        height: 220px;
+        border-radius: 18px;
+    }
+
+    .hero-main-card img {
+        height: 100%;
+        object-fit: contain;
+    }
 }
 
 .nav-links a:hover {
