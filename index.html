@@ -156,6 +156,33 @@
             <div class="cart-total">
                 <strong>Total: ₹<span id="cart-total-price">0</span></strong>
             </div>
+            <div class="cart-checkout">
+                <div class="checkout-field">
+                    <label for="delivery-address">Delivery address</label>
+                    <textarea id="delivery-address" rows="3" placeholder="Street address, city, postal code"></textarea>
+                </div>
+                <div class="checkout-field">
+                    <label for="payment-method">Payment method</label>
+                    <select id="payment-method">
+                        <option value="">Select payment method</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Debit Card">Debit Card</option>
+                        <option value="UPI">UPI</option>
+                        <option value="Cash on Delivery">Cash on Delivery</option>
+                    </select>
+                </div>
+                <div class="checkout-field upi-field" id="upi-field" style="display:none;">
+                    <label for="upi-id">UPI ID</label>
+                    <input type="text" id="upi-id" placeholder="9318418830@axl" value="9318418830@axl">
+                    <span class="upi-help">Your UPI number will be used for payment authorization.</span>
+                </div>
+                <div class="checkout-field payment-approval">
+                    <button id="approve-payment-btn" class="approve-btn">Approve Payment</button>
+                    <p class="payment-status" id="payment-status">Payment approval pending.</p>
+                </div>
+                <button id="checkout-btn" class="checkout-btn">Place Order</button>
+                <p class="checkout-message" id="checkout-message"></p>
+            </div>
         </div>
 
         <div class="shoe-chat-widget" id="shoe-chat-widget">
@@ -180,7 +207,14 @@
                 </form>
             </div>
         </div>
-
+<!-- Newspaper Section -->
+<section class="newspaper">
+    <h1>🚨 Breaking News 🚨</h1>
+    <p>Scientists have discovered that wearing sneakers makes you 200% cooler. 😎</p>
+    <p>Breaking: A man ran so fast in his Nike Air Max that he traveled back in time. 🕒</p>
+    <p>Experts confirm: The secret to happiness is owning more sneakers. 🥳</p>
+    <p>Stay tuned for more groundbreaking sneaker-related news! 👟</p>
+</section>
         <footer id="contact">
             <h2>Aniva</h2>
             <p>Premium Nike sneakers for a sharper everyday style, powered by Aniva.</p>

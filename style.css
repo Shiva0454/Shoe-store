@@ -460,10 +460,38 @@ h1, h2, h3, .logo {
     font-weight: 700;
 }
 
+.product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 16px;
+    margin-top: 14px;
+}
+
+.size-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    width: 40%;
+}
+
+.size-label select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    outline: none;
+}
+
 .card button {
-    margin: 14px 16px 0;
-    width: calc(100% - 32px);
-    padding: 12px 14px;
+    margin: 0;
+    width: auto;
+    padding: 12px 18px;
     background: var(--accent);
     color: #111;
     border-radius: 999px;
@@ -497,7 +525,7 @@ h1, h2, h3, .logo {
     color: #f7efe8;
     box-shadow: -12px 0 30px rgba(0,0,0,0.35);
     transition: right 0.3s ease;
-    z-index: 1000;
+    z-index: 2000;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -577,6 +605,62 @@ h1, h2, h3, .logo {
     padding-top: 16px;
     border-top: 1px solid var(--border);
     margin-top: 12px;
+}
+
+.cart-checkout {
+    margin-top: 18px;
+    display: grid;
+    gap: 12px;
+}
+
+.checkout-field {
+    display: grid;
+    gap: 8px;
+}
+
+.checkout-field label {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.checkout-field textarea,
+.checkout-field select,
+.checkout-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    resize: vertical;
+    outline: none;
+}
+
+.upi-help {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #39f5ff, #ff3ab9);
+    color: #111;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    opacity: 0.95;
+}
+
+.checkout-message {
+    margin-top: 6px;
+    color: rgba(212, 176, 106, 0.95);
+    font-size: 0.92rem;
+    line-height: 1.4;
 }
 
 .story {
@@ -924,4 +1008,87 @@ footer h2 {
         grid-template-columns: 1fr;
     }
 }
+/* For tablets and smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Adjust hero section */
+    .hero-visual {
+        min-height: 200px;
+        padding: 20px;
+    }
 
+    /* Stack navbar items vertically */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Adjust product grid to 2 columns */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    /* Adjust floating elements */
+    .floating-card,
+    .floating-pill {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        top: 8px;
+    }
+
+    /* Chatbot button adjustment */
+    .shoe-chat-toggle {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+/* For mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Adjust hero section for smaller screens */
+    .hero-visual {
+        min-height: 150px;
+        padding: 10px;
+    }
+
+    /* Make product grid single column */
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Adjust navbar for mobile */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    /* Footer adjustments */
+    footer {
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Chatbot button adjustment */
+    .shoe-chat-toggle {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+/* Center and style the Breaking News title */
+.newspaper h1 {
+    text-align: center; /* Center the title */
+    font-size: 2rem; /* Make it larger */
+    color: #007bff; /* Bright blue for emphasis */
+    background-color: #f1f1f1; /* Light gray background */
+    padding: 10px; /* Add padding around the text */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Add spacing below the title */
+}
