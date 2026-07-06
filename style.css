@@ -1025,3 +1025,27 @@ footer h2 {
     }
 }
 
+/* Put Home link on the right on small screens */
+@media (max-width: 760px) {
+    .home-link {
+        display: block;
+        position: absolute;
+        right: 110px; /* leave room for icons (cart, etc.) */
+        top: 20px;
+        z-index: 40;
+    }
+
+    .home-link a {
+        color: var(--text);
+        font-weight: 700;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: transparent;
+    }
+
+    /* Hide other nav links in mobile; menu-toggle controls dropdown */
+    .nav-links:not(.home-link) {
+        display: none;
+    }
+}
+
