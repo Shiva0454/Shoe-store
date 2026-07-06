@@ -459,6 +459,15 @@ if (menuToggle && navbar) {
     });
 }
 
+// close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navbar) return;
+    const isClickInside = navbar.contains(e.target);
+    if (!isClickInside && navbar.classList.contains('nav-open')) {
+        navbar.classList.remove('nav-open');
+    }
+});
+
 function renderProducts(products) {
     if (!productGrid) return;
 

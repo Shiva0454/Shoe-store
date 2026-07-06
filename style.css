@@ -185,6 +185,11 @@ h1, h2, h3, .logo {
         text-align: center;
     }
 
+    /* ensure navbar children don't overlap when absolute nav appears */
+    .navbar {
+        position: relative;
+    }
+
     .nav-links a {
         display: block;
         padding: 8px 6px;
@@ -1027,14 +1032,99 @@ footer h2 {
 
 /* Put Home link on the right on small screens */
 @media (max-width: 760px) {
+    /* reposition the standalone Home link */
     .home-link {
-        display: block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         position: absolute;
-        right: 110px; /* leave room for icons (cart, etc.) */
-        top: 20px;
+        right: 100px; /* leave room for icons (cart, etc.) */
+        top: 14px;
         z-index: 40;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.02);
     }
 
+    .icons {
+        position: absolute;
+        right: 12px;
+        top: 8px;
+        gap: 10px;
+    }
+
+    .logo {
+        margin-left: 6px;
+    }
+
+    .page-shell {
+        width: calc(100% - 18px);
+        margin: 0 auto;
+        padding-bottom: 18px;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
+        max-width: 28ch;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        margin-bottom: 18px;
+    }
+
+    .hero-main-card {
+        height: 200px;
+    }
+
+    .hero-main-card img {
+        object-fit: contain;
+    }
+
+    .floating-card, .floating-pill {
+        display: none;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        height: auto;
+        max-height: 220px;
+        object-fit: cover;
+    }
+
+    .cart-drawer {
+        width: 92%;
+        right: -100%;
+    }
+
+    .cart-drawer.open {
+        right: 4%;
+    }
+
+
+@media (max-width: 420px) {
+    /* further tighten for very small screens */
+    .home-link {
+        right: 86px;
+        top: 12px;
+        font-size: 0.95rem;
+    }
+
+    .menu-toggle {
+        right: 52px;
+    }
+
+    .hero-main-card {
+        height: 160px;
+    }
+
+    .shoe-chat-panel {
+        bottom: 68px;
+    }
+}
     .home-link a {
         color: var(--text);
         font-weight: 700;
