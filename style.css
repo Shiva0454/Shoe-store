@@ -934,31 +934,35 @@ footer h2 {
     }
 }
 
-/* Mobile: move chat to centered bottom and make toggle full-width small */
+/* Mobile chat: small round toggle at bottom-right and panel above it */
 @media (max-width: 540px) {
     .shoe-chat-widget {
-        left: 0;
-        right: 0;
-        bottom: 0;
-        align-items: center;
-        pointer-events: none; /* allow panel to handle interactions */
-        padding-bottom: 12px;
+        right: 14px;
+        left: auto;
+        bottom: 14px;
+        align-items: flex-end;
     }
 
     .shoe-chat-toggle {
-        width: calc(100% - 28px);
-        max-width: 560px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        padding: 0 0;
         justify-content: center;
-        pointer-events: auto;
+        gap: 6px;
+    }
+
+    .shoe-chat-toggle span {
+        display: none;
     }
 
     .shoe-chat-panel {
         position: absolute;
-        bottom: 72px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: calc(100% - 32px);
-        max-width: 620px;
+        right: 14px;
+        left: auto;
+        bottom: 78px;
+        width: min(320px, calc(100vw - 32px));
+        max-height: 460px;
         pointer-events: auto;
     }
 }
@@ -1032,25 +1036,24 @@ footer h2 {
 
 /* Put Home link on the right on small screens */
 @media (max-width: 760px) {
-    /* reposition the standalone Home link */
+    /* style for the Home link now moved into icons */
     .home-link {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        position: absolute;
-        right: 100px; /* leave room for icons (cart, etc.) */
-        top: 14px;
-        z-index: 40;
         padding: 6px 10px;
         border-radius: 8px;
-        background: rgba(255,255,255,0.02);
+        background: transparent;
+        color: var(--text);
+        font-weight: 700;
+        margin-right: 8px;
     }
 
     .icons {
-        position: absolute;
-        right: 12px;
-        top: 8px;
-        gap: 10px;
+        position: static;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
     }
 
     .logo {
