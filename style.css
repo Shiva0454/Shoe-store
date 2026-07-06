@@ -929,6 +929,35 @@ footer h2 {
     }
 }
 
+/* Mobile: move chat to centered bottom and make toggle full-width small */
+@media (max-width: 540px) {
+    .shoe-chat-widget {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        align-items: center;
+        pointer-events: none; /* allow panel to handle interactions */
+        padding-bottom: 12px;
+    }
+
+    .shoe-chat-toggle {
+        width: calc(100% - 28px);
+        max-width: 560px;
+        justify-content: center;
+        pointer-events: auto;
+    }
+
+    .shoe-chat-panel {
+        position: absolute;
+        bottom: 72px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 32px);
+        max-width: 620px;
+        pointer-events: auto;
+    }
+}
+
 @media (max-width: 540px) {
     .shoe-chat-toggle {
         width: 100%;
